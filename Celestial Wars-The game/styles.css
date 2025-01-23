@@ -1,1 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+}
+
+#spaceship-wrapper {
+    position: absolute;
+    pointer-events: none;
+}
+
+#spaceship {
+    position: relative;
+    width: 40px;
+    height: 50px;
+}
+
+.ship-body {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #0ff;
+    filter: drop-shadow(0 0 5px #0ff);
+}
+
+.ship-mid {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 16px;
+    height: 20px;
+    background: #099;
+    filter: drop-shadow(0 0 4px #0ff);
+}
+
+#ship-thruster {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 10px;
+    height: 20px;
+    background: linear-gradient(#f00, transparent);
+    filter: drop-shadow(0 0 6px #f00);
+    animation: thrusterIdle 0.4s infinite alternate;
+}
+
+@keyframes thrusterIdle {
+    0% {
+        height: 15px;
+        box-shadow: 0 0 10px #f00;
+    }
+    100% {
+        height: 25px;
+        box-shadow: 0 0 15px #f90;
+    }
+}
+
+.boost {
+    animation: thrusterBoost 0.2s infinite alternate !important;
+}
+
+@keyframes thrusterBoost {
+    0% {
+        height: 30px;
+        box-shadow: 0 0 15px 4px #f00;
+    }
+    100% {
+        height: 45px;
+        box-shadow: 0 0 25px 8px #ff0;
+    }
+}
+
+.laser {
+    position: absolute;
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(#ff0, #f80);
+    box-shadow: 0 0 6px #ff0;
+    pointer-events: none;
+}
+
+.laser-spread {
+    position: absolute;
+    width: 4px;
+    height: 15px;
+    background: linear-gradient(#0f0, #080);
+    box-shadow: 0 0 6px #0f0;
+    pointer-events: none;
+}
+
+.missile {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(#fff, #0ff);
+    box-shadow: 0 0 8px #0ff;
+    pointer-events: none;
+}
+
+.shockwave {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f00;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 12px 4px #f00;
+    pointer-events: none;
+    animation: shockExpand 0.4s linear forwards;
+}
+
+@keyframes shockExpand {
+    0% {
+        transform: scale(0.01);
+    }
+    100% {
+        transform: scale(5);
+    }
+}
+
+.charged-beam {
+    position: absolute;
+    width: 12px;
+    height: 30px;
+    background: linear-gradient(#ff0, #f00);
+    box-shadow: 0 0 12px #ff0;
+    pointer-events: none;
+}
+
+.asteroid {
+    position: absolute;
+    background: #444;
+    border: 2px solid #777;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #222;
+    pointer-events: none;
+}
+
+.spin {
+    animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #0ff;
+    text-shadow: 0 0 4px #0ff;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#score-label,
+#lives-label {
+    font-size: 16px;
+}
+
+#lives-container {
+    display: inline-block;
+}
+
+.life-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 3px;
+    background: #0f0;
+    box-shadow: 0 0 4px #0f0;
+}
+
+#weapon-info {
+    font-size: 14px;
+}
+
+#weapon-cooldown-bar {
+    position: relative;
+    width: 120px;
+    height: 10px;
+    background: #222;
+    border: 1px solid #0ff;
+    overflow: hidden;
+}
+
+#weapon-cooldown-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, #0ff, #0cc);
+    transition: width 0.1s linear;
+}
+
+#game-over-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10000;
+    display: none;
+}
+
+#game-over-overlay h1 {
+    font-size: 3rem;
+    color: #f33;
+    text-shadow: 0 0 6px #fff;
+    margin-bottom: 1rem;
+}
+
+#final-score {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#restart-button {
+    background: #222;
+    color: #0ff;
+    border: 2px solid #0ff;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s;
+}
+
+#restart-button:hover {
+    background: #0ff;
+    color: #222;
+}
 
