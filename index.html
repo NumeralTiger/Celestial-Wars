@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arcade Shooter</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="bg-selection-overlay">
+            <h2>Choose a background</h2>
+            <div class="bg-buttons">
+                <button class="bg-btn" id="bg-deep-space">Deep Space</button>
+                <button class="bg-btn" id="bg-nebula">Nebula</button>
+                <button class="bg-btn" id="bg-alien">Alien Planet</button>
+                <button class="bg-btn" id="bg-random">Random</button>
+            </div>
+        </div>
+
+        <div id="instructions-overlay">
+            <h2>How to Play</h2>
+            <div id="instructions-content">
+                <p><strong>Movement:</strong> Use WASD or Arrow Keys to navigate.</p>
+                <p><strong>Shoot & Charge:</strong> Use spacebar to fire. Hold it when using Charged Beam (Weapon 5).</p>
+                <p><strong>Weapons (1-5):</strong>
+                <p>1: Laser</p>
+                <p>2: Spread Shot</p>
+                <p>3: Seeker Missile</p>
+                <p>4: Shockwave</p>
+                <p>5: Charged Beam</p>
+                <p>Destroy asteroids for score; don't collide or you lose lives.</p>
+            </div>
+            <button id="start-game-button">Start Game</button>
+            <button id="view-leaderboard-btn" class="leaderboard-btn">View Leaderboard</button>
+        </div>
+
+        <!-- SPACESHIP -->
+        <div id="spaceship-wrapper">
+            <div id="spaceship">
+                <div class="ship-body"></div>
+                <div class="ship-mid"></div>
+                <div id="ship-thruster"></div>
+            </div>
+        </div>
+
+        <!-- UI -->
+        <div id="ui">
+            <div id="score-label">Score: <span id="score-value">0</span></div>
+            <div id="lives-label">Lives: <span id="lives-container"></span></div>
+            <div id="weapon-info">
+                Current Weapon: <span id="weapon-name">Laser</span>
+            </div>
+            <div id="weapon-cooldown-bar">
+                <div id="weapon-cooldown-fill"></div>
+            </div>
+        </div>
+
+        <!-- GAME OVER OVERLAY -->
+        <div id="game-over-overlay">
+            <h1>GAME OVER</h1>
+            <div id="final-score"></div>
+            <button id="restart-button">Restart</button>
+        </div>
+
+        <!-- LEADERBOARD OVERLAY -->
+        <div id="leaderboard-overlay">
+            <h2>High Scores</h2>
+            <ol id="leaderboard-list"></ol>
+            <button id="close-leaderboard-button" class="leaderboard-btn">Close</button>
+            <button id="reset-scores-button" class="leaderboard-btn">Reset Scores</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
