@@ -8,6 +8,6 @@
 
 ## Try it out
 
-👉 [Play Celestial Wars](<https://main.dh3dbya5is7xi.amplifyapp.com/>)
+👉 [Play Celestial Wars](<https://celestial-wars.vercel.app/>)
 
  
